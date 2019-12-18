@@ -1,3 +1,7 @@
+import file_handling
+filename = 'albums_data.txt'
+albums = file_handling.import_data(filename)
+
 def get_albums_by_genre(albums, genre):
     """
     Get albums by genre
@@ -8,7 +12,16 @@ def get_albums_by_genre(albums, genre):
     :returns: all albums of given genre
     :rtype: list
     """
-
+    
+    table = file_handling.import_data(filename)
+    genre = input("Pleae provide a music genre: ")
+    album_col = 1
+    albums_data = []
+    for line in table:
+        if genre in line:
+            albums_data.append(line[album_col])
+    return albums_data
+            
 
 def get_genre_stats(albums):
     """
@@ -19,7 +32,17 @@ def get_genre_stats(albums):
     :returns: genre stats
     :rtype: dict
     """
-
+    genre_stats = {}
+    genre_col = 3
+    table = file_handling.import_data(filename)
+    for line in table:
+        if line[genre_col] in genre_stats:
+            genre_stats[line[genre_col]] += 1
+        else: 
+            genre_stats[line[genre_col]] = 1
+    print(genre_stats)
+    return genre_stats
+    
 
 def get_longest_album(albums):
     """
@@ -77,3 +100,15 @@ def get_total_albums_length(albums):
     durations = map(lambda album: to_time(album[DURATION]), albums)
     total = sum(durations)
     return int(total / 60) + ((total % 60)/ 60)
+
+
+genre_stats = {}
+genre_col = 3
+table = file_handling.import_data(filename)
+for line in table:
+    if line[genre_col] in genre_stats:
+        genre_stats[line[genre_col]] += 1
+    else: 
+        genre_stats[line[genre_col]] = 1
+print(genre_stats)
+#return genre_stats
