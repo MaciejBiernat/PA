@@ -14,12 +14,10 @@ def get_albums_by_genre(albums, genre):
     """
     
     table = file_handling.import_data(filename)
-    album_col = 1
     albums_data = []
     for line in table:
         if genre in line:
-            albums_data.append(line[album_col])
-    print (albums_data)        
+            albums_data.append(line)       
     return albums_data
             
 
@@ -34,12 +32,11 @@ def get_genre_stats(albums):
     """
     genre_stats = {}
     genre_col = 3
-    table = file_handling.import_data(filename)
-    for line in table:
-        if line[genre_col] in genre_stats:
-            genre_stats[line[genre_col]] += 1
-        else: 
+    for line in albums:
+        if line[genre_col] not in genre_stats:
             genre_stats[line[genre_col]] = 1
+        else: 
+            genre_stats[line[genre_col]] += 1
     return genre_stats
     
 

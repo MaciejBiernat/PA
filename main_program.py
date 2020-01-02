@@ -30,20 +30,36 @@ def main():
     You should create new functions and call them from main whenever it can
     make the code cleaner
     """
-
-    display.print_albums_list(albums)
-    commands = ['Get albums by genre', 'Qunatity of albms in each genre',
-     'Get album with biggest value in length field.', 'Get last album with earliest release year.', 
-     'Get last album with earliest release year in given genre', 'Exit']
-    display.print_program_menu(commands)
     
-    choose = input()
-    if choose == '1':
-        genre = input("Pleae provide a music genre: ")
-        albums_data = music_reports.get_albums_by_genre(albums, genre)
-        display.print_album_info(albums_data)
-    if choose == '2':
-        music_reports.get_genre_stats(albums)
+    choose = None
+    
+
+    while choose != 5:
+        
+        commands = ['Get albums by genre', 'Qunatity of albums in each genre',
+        'Get album with biggest value in length field.', 'Get last album with earliest release year.', 
+        'Get last album with earliest release year in given genre', 'Exit']
+        #display.print_albums_list(albums)
+        display.print_program_menu(commands)
+      
+
+        
+
+        choose = int(input("Please provide your choose: "))
+        message = commands[choose]
+        display.print_command_result(message)
+        if message == 'Get albums by genre':
+            genre = input("Pleae provide a music genre: ")
+            albums_data = music_reports.get_albums_by_genre(albums, genre)
+            for album in albums_data:
+                display.print_album_info(album)
+        if message == 'Qunatity of albums in each genre':
+            result = music_reports.get_genre_stats(albums)
+            message = str(result)
+            display.print_command_result(message)
+        else:
+            print("dupas")
+
 
 
 
