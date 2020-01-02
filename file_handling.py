@@ -10,12 +10,11 @@ def import_data(filename='albums_data.txt'):
     :returns: list of lists representing albums' data
     :rtype: list
     """
-    result = []
+    results = []
     with open(filename, 'r') as datafile:
         for line in datafile.readlines():
-            result.append(line.strip().split(','))
-    return result
-
+            results.append(line.strip().split(','))
+    return results
 
 def export_data(albums, filename='albums_data.txt', mode='a'):
     """

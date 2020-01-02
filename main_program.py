@@ -7,6 +7,7 @@ import display
 filename = 'albums_data.txt'
 albums = file_handling.import_data(filename)
 
+
 def delete_album_by_artist_and_album_name(albums, artist, album_name):
     """
     Deletes album of given name by given artist from list and updates data file
@@ -29,26 +30,23 @@ def main():
     You should create new functions and call them from main whenever it can
     make the code cleaner
     """
-    choose = None
-    while choose !=0:
-        print("""Welcome to music library. Please choose your function
-        1) Get albums by genre
-        2) Qunatity of albms in each genre
-        3) Get album with biggest value in length field.
-        4) Get last album with earliest release year.
-        5) Get last album with earliest release year in given genre
-        0) Exit
-        :
-        """)
-        choose = input()
-        if choose == '1':
-            genre = input("Pleae provide a music genre: ")
-            music_reports.get_albums_by_genre(albums, genre)
-        if choose == '2':
-            music_reports.get_genre_stats(albums)
+
+    display.print_albums_list(albums)
+    commands = ['Get albums by genre', 'Qunatity of albms in each genre',
+     'Get album with biggest value in length field.', 'Get last album with earliest release year.', 
+     'Get last album with earliest release year in given genre', 'Exit']
+    display.print_program_menu(commands)
+    
+    choose = input()
+    if choose == '1':
+        genre = input("Pleae provide a music genre: ")
+        albums_data = music_reports.get_albums_by_genre(albums, genre)
+        display.print_album_info(albums_data)
+    if choose == '2':
+        music_reports.get_genre_stats(albums)
 
 
-            
+
 
 
 

@@ -14,12 +14,12 @@ def get_albums_by_genre(albums, genre):
     """
     
     table = file_handling.import_data(filename)
-    genre = input("Pleae provide a music genre: ")
     album_col = 1
     albums_data = []
     for line in table:
         if genre in line:
             albums_data.append(line[album_col])
+    print (albums_data)        
     return albums_data
             
 
@@ -40,7 +40,6 @@ def get_genre_stats(albums):
             genre_stats[line[genre_col]] += 1
         else: 
             genre_stats[line[genre_col]] = 1
-    print(genre_stats)
     return genre_stats
     
 
@@ -53,6 +52,10 @@ def get_longest_album(albums):
     :returns: longest album
     :rtype: list
     """
+    table = file_handling.import_data(filename)
+    longest_name = []
+    for line in table:
+        compar_len = len(",".join(line))
 
 
 def get_last_oldest(albums):
@@ -101,14 +104,5 @@ def get_total_albums_length(albums):
     total = sum(durations)
     return int(total / 60) + ((total % 60)/ 60)
 
-
-genre_stats = {}
-genre_col = 3
-table = file_handling.import_data(filename)
-for line in table:
-    if line[genre_col] in genre_stats:
-        genre_stats[line[genre_col]] += 1
-    else: 
-        genre_stats[line[genre_col]] = 1
-print(genre_stats)
-#return genre_stats
+ 
+        
