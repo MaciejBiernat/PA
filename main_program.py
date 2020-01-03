@@ -30,16 +30,15 @@ def main():
     You should create new functions and call them from main whenever it can
     make the code cleaner
     """
-    
     choose = None
     
 
     while choose != 5:
         
         commands = ['Get albums by genre', 'Qunatity of albums in each genre',
-        'Get album with biggest value in length field.', 'Get last album with earliest release year.', 
+        'Get album with biggest value in length field', 'Get last album with earliest release year.', 
         'Get last album with earliest release year in given genre', 'Exit']
-        #display.print_albums_list(albums)
+        display.print_albums_list(albums)
         display.print_program_menu(commands)
       
 
@@ -57,6 +56,8 @@ def main():
             result = music_reports.get_genre_stats(albums)
             message = str(result)
             display.print_command_result(message)
+        if message == 'Get album with biggest value in length field':
+            albums_data = music_reports.get_longest_album(albums)
         else:
             print("dupas")
 

@@ -1,6 +1,4 @@
-import file_handling
-filename = 'albums_data.txt'
-albums = file_handling.import_data(filename)
+
 
 def get_albums_by_genre(albums, genre):
     """
@@ -13,10 +11,10 @@ def get_albums_by_genre(albums, genre):
     :rtype: list
     """
     
-    table = file_handling.import_data(filename)
+    
     albums_data = []
-    for line in table:
-        if genre in line:
+    for line in albums:
+        if genre in albums:
             albums_data.append(line)       
     return albums_data
             
@@ -49,10 +47,8 @@ def get_longest_album(albums):
     :returns: longest album
     :rtype: list
     """
-    table = file_handling.import_data(filename)
-    longest_name = []
-    for line in table:
-        compar_len = len(",".join(line))
+    LENGTH_COL = 4
+    
 
 
 def get_last_oldest(albums):
