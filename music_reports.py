@@ -71,6 +71,14 @@ def get_last_oldest(albums):
     :returns: last oldest album
     :rtype: list
     """
+    DATE_COL = 2
+    earliests_albums = []
+    rel_date = map(lambda line: int(line[DATE_COL]), albums)
+    min_year = min(rel_date)
+    for line in albums:
+        if min_year == int(line[DATE_COL]):
+            earliests_albums.append(line)
+    return earliests_albums
 
 
 def get_last_oldest_of_genre(albums, genre):

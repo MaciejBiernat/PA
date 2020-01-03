@@ -36,7 +36,7 @@ def main():
     while choose != 5:
         
         commands = ['Get albums by genre', 'Qunatity of albums in each genre',
-        'Get album with biggest value in length field', 'Get last album with earliest release year.', 
+        'Get album with biggest value in length field', 'Get last album with earliest release year', 
         'Get last album with earliest release year in given genre', 'Exit']
         display.print_albums_list(albums)
         display.print_program_menu(commands)
@@ -58,6 +58,10 @@ def main():
             display.print_command_result(message)
         if message == 'Get album with biggest value in length field':
             albums_data = music_reports.get_longest_album(albums)
+            for album in albums_data:
+                display.print_album_info(album)
+        if message == 'Get last album with earliest release year':
+            albums_data = music_reports.get_last_oldest(albums)
             for album in albums_data:
                 display.print_album_info(album)
         else:
