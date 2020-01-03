@@ -48,6 +48,16 @@ def get_longest_album(albums):
     :rtype: list
     """
     LENGTH_COL = 4
+    max_l = 0
+    longest_albums = []
+    for line in albums:
+        length = to_time(line[LENGTH_COL])
+        if length > max_l:
+            max_l = length
+    for line in albums:
+        if to_time(line[LENGTH_COL]) == max_l:
+            longest_albums.append(line)
+    return longest_albums
     
 
 
@@ -74,12 +84,12 @@ def get_last_oldest_of_genre(albums, genre):
     """
 
 
-def to_time(str):
+def to_time(stro):
     """
     converts time in format "minutes:seconds" (string) to seconds (int)
     """
     SEC_IN_MIN = 60
-    min_sec = str.split(':')
+    min_sec = stro.split(':')
     return int(min_sec[0])*SEC_IN_MIN + int(min_sec[1])
 
 def get_total_albums_length(albums):

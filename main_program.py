@@ -58,6 +58,8 @@ def main():
             display.print_command_result(message)
         if message == 'Get album with biggest value in length field':
             albums_data = music_reports.get_longest_album(albums)
+            for album in albums_data:
+                display.print_album_info(album)
         else:
             print("dupas")
 
